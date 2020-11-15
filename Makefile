@@ -4,7 +4,8 @@ bench:
 	taskset --cpu-list 0-3 hey \
 		-n 1000000 \
 		-c 100 \
-		-m GET \
+		-m POST \
+		-T "application/json" \
 		-d '{"name":"some_string"}' \
 		http://localhost:50051
 

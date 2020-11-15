@@ -6,19 +6,21 @@ const characters =
 const charactersLength = characters.length
 
 const app = express()
-app.use(bodyParser.json({
+
+var jsonParser = bodyParser.json({
     limit: '50mb',
     verify(req: any, res, buf, encoding) {
         req.rawBody = buf
     }
-}))
-app.get('/', (req: express.Request, res: express.Response) => {
+})
+
+app.post('/', jsonParser, (req: express.Request, res: express.Response) => {
     const len = Math.floor(Math.random() * 800 + 200)
-    const data = [...Array(len)].map((_) =>
+    const out = [...Array(len)].map((_) =>
         String.fromCharCode(characters.charCodeAt(
             Math.floor(Math.random() * charactersLength))))
 
-    res.send(data.join(''))
+    res.send(req.body.name + out.join(''))
 })
 
 export { app }
