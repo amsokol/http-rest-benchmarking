@@ -15,7 +15,7 @@ import (
 const addr = ":50051"
 
 const charset = "abcdefghijklmnopqrstuvwxyz" +
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 var _rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 var _muxRand sync.Mutex
@@ -48,7 +48,7 @@ func main() {
 
 		l := len(in.Name)
 		_muxRand.Lock()
-        cap := _rand.Intn(801) + 200
+		cap := _rand.Intn(801) + 200
 		_muxRand.Unlock()
 
 		var b strings.Builder
@@ -56,7 +56,7 @@ func main() {
 		b.Grow(l+cap)
 		b.WriteString(in.Name)
 
-        for i := 0; i < cap; i++ {
+		for i := 0; i < cap; i++ {
 			_muxRand.Lock()
 			n := _rand.Intn(len(charset))
 			_muxRand.Unlock()
