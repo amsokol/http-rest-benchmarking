@@ -20,4 +20,13 @@ start-node-express:
 		cd ./node/rest-express && \
 		npm run start
 
-bench-node-express: bench
+server-go-std: build-go-std start-go-std
+
+build-go-std:
+		cd ./go/rest-std && \
+		easyjson data/data.go && \
+		go build .
+
+start-go-std:
+		cd ./go/rest-std && \
+		./rest-std
