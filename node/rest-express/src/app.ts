@@ -20,7 +20,7 @@ app.post('/', jsonParser, (req: express.Request, res: express.Response) => {
         String.fromCharCode(characters.charCodeAt(
             Math.floor(Math.random() * charactersLength))))
 
-    res.send(req.body.name + out.join(''))
+    res.send({ result: req.body.name + out.join('') })
 })
 
 export { app }
