@@ -4,5 +4,6 @@
         "Sokolovskii",
         "prebuild",
         "prestart"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
